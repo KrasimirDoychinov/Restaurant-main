@@ -1,0 +1,64 @@
+﻿@model OrderViewModel
+
+<table class="table table-light table-striped table-hover text-dark background-table border ">
+    <thead class="thead-dark">
+        <tr class="text-light">
+            <th scope="col" class="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Ingredients</th>
+            <th scope="col">Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                <img src="~/Images/@item.Product.ImagePath" 
+                     class="text-center text-decoration-none product-order" 
+                     style="width: 155px; height:120px">
+                <p class=" text-md-left text-center">@item.Product.Name</p></td>
+
+                <td>@item.Product.Price lv.</td>
+                <td>@item.Product.Weight grams</td>
+                <td>@item.Product.Ingredients</td>
+                <td>@item.Product.ProductType</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.IsCouponUsed)
+{
+    <h4 class="text-success">Coupon used!</h4>
+}
+<h4 class="float-right">Total price: @Model.TotalPrice lv.</h4>
+
+<form method="post" enctype="multipart/form-data" >
+
+    <div class="form-group col-2">
+        <label asp-for="CouponName" class="font-weight-bold "></label>
+        <input asp-for="CouponName" class="form-control border border-dark" />
+        <span asp-validation-for="CouponName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" hidden="hidden">
+        <label asp-for="TotalPrice" class="font-weight-bold text-warning"></label>
+        <input asp-for="TotalPrice" class="form-control bg-dark text-white border border-dark" />
+        <span asp-validation-for="TotalPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" hidden="hidden">
+        <label asp-for="Id" class="font-weight-bold text-warning"></label>
+        <input asp-for="Id" class="form-control bg-dark text-white border border-dark" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+
+    <input type="submit" class="btn btn-danger" value="Apply coupon" />
+    <hr class="bg-dark" />
+
+</form>
+<div>
+    <a class="btn btn-success" asp-area="" asp-controller="Order" asp-action="Finish" asp-route-id="@Model.Id">Finish order</a>
+</div>

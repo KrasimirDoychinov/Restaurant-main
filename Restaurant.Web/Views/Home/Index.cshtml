@@ -1,0 +1,23 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="row">
+        <div class="col-md-9">
+            @foreach (var item in Model.Products)
+            {
+                <div class="d-inline-block grid mb-1">
+                    <a asp-area="" asp-controller="Order" asp-action="CreateOrder" asp-route-productId="@item.Id"><img src="~/Images/@item.ImagePath" class="ml-3 product" style="width: 300px; height:275px" /></a>
+                    <h5><span class="font-weight-bold text-break">Name: </span>@(item.Name.Length > 20 ? item.Name.Substring(0, 20) + "..." : item.Name)</h5>
+                    <h6><span class="font-weight-bold">Price: </span>@item.Price lv.</h6>
+                    <h6><span class="font-weight-bold">Weight: </span>@item.Weight gr.</h6>
+                    <h6><span class="font-weight-bold">Ingredients: </span>@(item.Ingredients.Length > 20 ? item.Ingredients.Substring(0, 20) + "..." : item.Ingredients)</h6>
+                    <h6><span class="font-weight-bold">Created on: </span>@item.CreatedOn</h6>
+                </div>
+            }
+        </div>
+    </div>
+</div>

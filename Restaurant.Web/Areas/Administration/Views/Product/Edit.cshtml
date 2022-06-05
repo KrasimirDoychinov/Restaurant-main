@@ -1,0 +1,52 @@
+﻿@model ProductEditModel
+
+<div class="row align-items-center justify-content-center">
+    <div class="col-7">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="font-weight-bold "></label>
+                <input asp-for="Name" class="form-control  border border-dark" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="font-weight-bold"></label>
+                <input asp-for="Price" class="form-control border border-dark" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Weight" class="font-weight-bold "></label>
+                <input asp-for="Weight" class="form-control border border-dark" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProductType" class="font-weight-bold "></label>
+                <select asp-for="ProductType" class="form-control border border-dark"
+                        asp-items="@Html.GetEnumSelectList<ProductType>()">
+                </select>
+                <span asp-validation-for="ProductType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Ingredients" class="font-weight-bol"></label>
+                <textarea asp-for="Ingredients" class="form-control  border border-dark" rows="3"></textarea>
+                <span asp-validation-for="Ingredients" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image" class="font-weight-bold "></label>
+                <input asp-for="Image" class="form-control border border-dark" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <hr class="bg-dark" />
+            <input type="submit" class="btn btn-info" value="Edit" />
+
+        </form>
+    </div>
+</div>
+
