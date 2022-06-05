@@ -181,36 +181,7 @@ namespace Restaurant.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Coupon", "17118018");
-                });
-
-            modelBuilder.Entity("Restaurant.Data.Models.Journal", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DbOperation")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedOn_17118018")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("TimeOfOperation")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("log_17118018", "17118018");
+                    b.ToTable("Coupons");
                 });
 
             modelBuilder.Entity("Restaurant.Data.Models.Order", b =>
@@ -243,7 +214,7 @@ namespace Restaurant.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", "17118018");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Restaurant.Data.Models.Product", b =>
@@ -283,7 +254,7 @@ namespace Restaurant.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products", "17118018");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Restaurant.Data.Models.ProductOrder", b =>
@@ -312,36 +283,7 @@ namespace Restaurant.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductsOrders", "17118018");
-                });
-
-            modelBuilder.Entity("Restaurant.Data.Models.Reservation", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedOn_17118018")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ReservationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Reservor")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TableNumber")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Reservations", "17118018");
+                    b.ToTable("ProductsOrders");
                 });
 
             modelBuilder.Entity("Restaurant.Data.Models.User", b =>

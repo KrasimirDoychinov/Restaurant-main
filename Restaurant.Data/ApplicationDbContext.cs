@@ -29,7 +29,7 @@ namespace Restaurant.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=restaurant;Integrated Security=true;");
+                optionsBuilder.UseSqlServer("Server=.;Database=Restaurant-test;Integrated Security=true;");
             }
 
             optionsBuilder.UseLazyLoadingProxies();

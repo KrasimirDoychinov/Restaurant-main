@@ -3,13 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Restaurant.Data.Migrations
 {
-    public partial class Test : Migration
+    public partial class InitialCreate : Migr ation
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "17118018");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -50,8 +47,7 @@ namespace Restaurant.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Coupon",
-                schema: "17118018",
+                name: "Coupons",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -64,30 +60,11 @@ namespace Restaurant.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coupon", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "log_17118018",
-                schema: "17118018",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TableName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DbOperation = table.Column<int>(type: "int", nullable: false),
-                    TimeOfOperation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn_17118018 = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_log_17118018", x => x.Id);
+                    table.PrimaryKey("PK_Coupons", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Products",
-                schema: "17118018",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -104,24 +81,6 @@ namespace Restaurant.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reservations",
-                schema: "17118018",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Reservor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReservationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TableNumber = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn_17118018 = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reservations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -232,7 +191,6 @@ namespace Restaurant.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Orders",
-                schema: "17118018",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -257,7 +215,6 @@ namespace Restaurant.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ProductsOrders",
-                schema: "17118018",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -273,14 +230,12 @@ namespace Restaurant.Data.Migrations
                     table.ForeignKey(
                         name: "FK_ProductsOrders_Orders_OrderId",
                         column: x => x.OrderId,
-                        principalSchema: "17118018",
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ProductsOrders_Products_ProductId",
                         column: x => x.ProductId,
-                        principalSchema: "17118018",
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -327,19 +282,16 @@ namespace Restaurant.Data.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
-                schema: "17118018",
                 table: "Orders",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductsOrders_OrderId",
-                schema: "17118018",
                 table: "ProductsOrders",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductsOrders_ProductId",
-                schema: "17118018",
                 table: "ProductsOrders",
                 column: "ProductId");
         }
@@ -362,31 +314,19 @@ namespace Restaurant.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Coupon",
-                schema: "17118018");
+                name: "Coupons");
 
             migrationBuilder.DropTable(
-                name: "log_17118018",
-                schema: "17118018");
-
-            migrationBuilder.DropTable(
-                name: "ProductsOrders",
-                schema: "17118018");
-
-            migrationBuilder.DropTable(
-                name: "Reservations",
-                schema: "17118018");
+                name: "ProductsOrders");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Orders",
-                schema: "17118018");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Products",
-                schema: "17118018");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

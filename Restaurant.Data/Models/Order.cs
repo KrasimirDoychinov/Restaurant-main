@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Restaurant.Data.Models
 {
-    [Table(name: "Orders", Schema = "17118018")]
     public class Order : BaseDeletableModel
     {
         public string UserId { get; set; }
